@@ -1,12 +1,12 @@
-import express, {Application, Request, Response} from 'express'
 import swaggerUi from 'swagger-ui-express'
 import { swaggerSpec } from './swagger.conf'
+import express,{Application, Request, Response} from 'express'
 
 /**
- * Clase principal de la APi, define las rutas de la API
+ * Clase principal de la API. Define las rutas de la API
  * 
  * @author Leidy Quiñones
- * @description Clase inical de ejemplo para la creación de rutas y documentación
+ * @description Clase inicial de ejemplo para manejar rutas y documentación
  */
 
 //Para usar el typedoc; npx typedoc --entryPointStrategy expand ./src   (Lugar de la documentación )
@@ -18,14 +18,17 @@ class App{
 	constructor(){
 		this.app=express()
 		this.app.use(express.json())
-		this.routes()
 		this.app.use(
 			'/api-docs', //Donde se publicará la documentación
 			swaggerUi.serve, //En qué servidor
 			swaggerUi.setup(swaggerSpec) //La configuración que usará
 		)
+		this.routes()
 	}
 
+	/**
+	 * Definir y agregar las rutas de la Api con express
+	 */
 	private routes():void{
 		this.app.get(
 			'/',(req:Request, res:Response)=>{res.send('bienvenido a TypeScript')}

@@ -1,7 +1,7 @@
-import App from './Router'
+import App from './App'
 
 
-const app=new App()
-app.start()
+const program=new App()
+program.start()
 
 //npx ts-node src/index.ts ejecutar el archivo

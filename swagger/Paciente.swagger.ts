@@ -1,5 +1,4 @@
-export default{
-
+export default {
     /**
      * 
      * @swagger
@@ -7,10 +6,13 @@ export default{
      * /paciente:
      *  post:
      *      summary: Obtener un mensaje de prueba
-     *      responses: 
+     *      responses:
      *          200:
      *              description: Has obtenido un mensaje de prueba
-     *              type: String
+     *              type: string
+     *              content:
+     *              text/plain:
+     *              example: "Bienvenidos a TypeScript"
      * 
      */
     }
