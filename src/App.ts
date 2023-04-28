@@ -1,9 +1,13 @@
 import swaggerUi from 'swagger-ui-express'
 import { swaggerSpec } from './swagger.conf'
 import express,{Application, Request, Response} from 'express'
-import { PrismaClient } from '@prisma/client'
 import PacienteRouter from './routes/Paciente.routes'
 import MedicoRouter from './routes/Medico.routes'
+import CitaRoutes from './routes/Cita.routes'
+import EspecialidadRoutes from './routes/Especialidad.routes'
+import FormularioRoutes from './routes/Formulario.routes'
+import cors from 'cors'
+
 
 /**
  * Clase principal de la API. Define las rutas de la API
@@ -26,6 +30,7 @@ class App{
 			swaggerUi.serve, //En qué servidor
 			swaggerUi.setup(swaggerSpec) //La configuración que usará
 		)
+		this.app.use(cors())
 		this.routes()
 	}
 
@@ -35,6 +40,9 @@ class App{
 	private routes():void{
         this.app.use('/', PacienteRouter)
 		this.app.use('/', MedicoRouter)
+		this.app.use('/', CitaRoutes)
+		this.app.use('/',EspecialidadRoutes)
+		this.app.use('/',FormularioRoutes)
 		
 	}
 
