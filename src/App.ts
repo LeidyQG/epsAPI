@@ -1,6 +1,9 @@
 import swaggerUi from 'swagger-ui-express'
 import { swaggerSpec } from './swagger.conf'
 import express,{Application, Request, Response} from 'express'
+import { PrismaClient } from '@prisma/client'
+import PacienteRouter from './routes/Paciente.routes'
+import MedicoRouter from './routes/Medico.routes'
 
 /**
  * Clase principal de la API. Define las rutas de la API
@@ -30,22 +33,23 @@ class App{
 	 * Definir y agregar las rutas de la Api con express
 	 */
 	private routes():void{
-		this.app.get(
-			'/',(req:Request, res:Response)=>{res.send('bienvenido a TypeScript')}
-		)
-
-		this.app.post(
-			'/paciente',(req:Request, res:Response)=>{res.send('bienvenido a TypeScript')}
-		)
+        this.app.use('/', PacienteRouter)
+		this.app.use('/', MedicoRouter)
+		
 	}
 
 	public start():void{
-		this.server=this.app.listen(3000,()=>{console.log('El servidor está escuchando en el puerto 3000')})
+
+		this.server=this.app.listen(
+			3000,
+			()=>{console.log('El servidor está escuchando en el puerto 3000')}
+		)
 	}
 
 	public close():void{
 		this.server.close()
 	}
+
 }
 
 export default App
