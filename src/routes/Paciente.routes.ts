@@ -1,6 +1,13 @@
 import { Router, Response, Request } from 'express'
 import PacienteController from '../controllers/PacienteController' 
 
+/**
+ * Router de la funcionalidad de pacientes
+ * cuenta con dos métodos
+ *  get: Para listar los pacientes con sus datos
+ *  post: Para registrar un paciente
+ */
+
 
 class PacienteRouter{
 

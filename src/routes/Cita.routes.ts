@@ -1,6 +1,10 @@
 import { Router, Request, Response } from 'express'
 import CitaController from '../controllers/CitaController'
 
+/**
+ * Router de la funcionalidad de citas
+ * cuenta con un método get para listar las citas por pacientes
+ */
 class CitaRouter{
 
     router:Router

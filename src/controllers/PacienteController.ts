@@ -1,5 +1,11 @@
 import { Response, Request } from 'express'
-import { PrismaClient } from '@prisma/client'    
+import { PrismaClient } from '@prisma/client'   
+
+/**
+ * Controller de la funcionalidad de registro y listado de pacientes, se define una clase principal en la cual se
+ * obtendrá el listado de pacientes , se utiliza el ORM prisma y Mariadb
+ * Cuenta con dos métodos: Get y Post
+ */
 
 class PacienteController{
 

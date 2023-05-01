@@ -1,6 +1,10 @@
 import { Router, Request, Response } from 'express'
 import EspecialidadController from '../controllers/EspecialidadController'
 
+/**
+ * Router de la funcionalidad de especialidades
+ * cuenta con un método get para listar las especiales por médico
+ */
 class EspecialidadRouter{
 
     router:Router
@@ -15,7 +19,7 @@ class EspecialidadRouter{
 
     private routes():void{
 
-        this.router.get('/citas',
+        this.router.get('/especialidad',
             (req:Request, res:Response)=> {
                 this.especialidadController.obtenerEspecialidades(req,res)
             }        

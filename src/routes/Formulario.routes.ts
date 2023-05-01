@@ -1,6 +1,10 @@
 import { Router,Request,Response } from 'express'
 import FormularioController from '../controllers/FormularioController'
 
+/**
+ * Router de la funcionalidad de formularios
+ * cuenta con un método get para obtener el formulario según se requiera
+ */
 class FormularioRouter{
 
     router=Router()

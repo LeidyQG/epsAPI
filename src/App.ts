@@ -13,7 +13,7 @@ import cors from 'cors'
  * Clase principal de la API. Define las rutas de la API
  * 
  * @author Leidy Quiñones
- * @description Clase inicial de ejemplo para manejar rutas y documentación
+ * @description Clase principal de la API que gestiona la EPS
  */
 
 //Para usar el typedoc; npx typedoc --entryPointStrategy expand ./src   (Lugar de la documentación )
@@ -35,7 +35,7 @@ class App{
 	}
 
 	/**
-	 * Definir y agregar las rutas de la Api con express
+	 * Rutas que usa la API cada una para una funcionalidad diferente donde tienen routers y controllers independientes
 	 */
 	private routes():void{
         this.app.use('/', PacienteRouter)
@@ -45,7 +45,10 @@ class App{
 		this.app.use('/',FormularioRoutes)
 		
 	}
-
+	/**
+	 * Método para la iniciación del servidor, Aunque se define un método de apagado de servidor,
+	 * se utiliza la biblioteca nodemon para automatizar el enciendido y apagado del servidor
+	 */
 	public start():void{
 
 		this.server=this.app.listen(
@@ -54,6 +57,9 @@ class App{
 		)
 	}
 
+	/**
+	 * Método para apagar el servidor, tenga en cuenta el uso de la biblioteca nodemon para su automatización
+	 */
 	public close():void{
 		this.server.close()
 	}
