@@ -1,12 +1,17 @@
 import swaggerUi from 'swagger-ui-express'
 import { swaggerSpec } from './swagger.conf'
 import express,{Application, Request, Response} from 'express'
+import passport from "passport"
+import dotenv from 'dotenv'
+dotenv.config()
 import PacienteRouter from './routes/Paciente.routes'
 import MedicoRouter from './routes/Medico.routes'
 import CitaRoutes from './routes/Cita.routes'
 import EspecialidadRoutes from './routes/Especialidad.routes'
 import FormularioRoutes from './routes/Formulario.routes'
 import cors from 'cors'
+import rutas_auth from './routes/authRoutes'
+import miEstrategia from "./config/passport"
 
 
 /**
@@ -32,8 +37,14 @@ class App{
 		)
 		this.app.use(cors())
 		this.routes()
+		this.app.use('/auth',rutas_auth)
+		passport.use(miEstrategia)
+		this.app.use(passport.initialize()) 
+		this.app.use('/',passport.authenticate('jwt',{session:false}) ,PacienteRouter)
+		this.app.use('/',passport.authenticate('jwt',{session:false}) ,CitaRoutes)
 	}
 
+		
 	/**
 	 * Rutas que usa la API cada una para una funcionalidad diferente donde tienen routers y controllers independientes
 	 */
