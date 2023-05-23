@@ -24,6 +24,13 @@ class CitaRouter{
                 this.citaController.obtenerCitas(req,res)
             }        
         )
+
+        this.router.post(
+			'/crear_cita',
+            (req:Request, res:Response)=>{
+                this.citaController.crearCita(req, res)
+            }			
+		)
     }
 
 }

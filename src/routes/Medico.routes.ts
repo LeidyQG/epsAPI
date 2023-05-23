@@ -28,7 +28,7 @@ class MedicoRouter{
         )
 
         this.router.post(
-			'/crear_paciente',
+			'/crear_medico',
             (req:Request, res:Response)=>{
                 this.medicoController.crearMedico(req, res)
             }			
