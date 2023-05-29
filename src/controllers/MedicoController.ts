@@ -31,7 +31,7 @@ class MedicoController{
                 Especialidad
             }= req.body
             
-            const medico= await this.prismaClient.paciente.create(
+            const medico= await this.prismaClient.medico.create(
                 {
                     data:{
                         tarjetaProfesional,

@@ -37,11 +37,11 @@ class App{
 		)
 		this.app.use(cors())
 		this.routes()
-		this.app.use('/auth',rutas_auth)
+		/*this.app.use('/auth',rutas_auth)
 		passport.use(miEstrategia)
 		this.app.use(passport.initialize()) 
 		this.app.use('/',passport.authenticate('jwt',{session:false}) ,PacienteRouter)
-		this.app.use('/',passport.authenticate('jwt',{session:false}) ,CitaRoutes)
+		this.app.use('/',passport.authenticate('jwt',{session:false}) ,CitaRoutes)*/
 	}
 
 		
