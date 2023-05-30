@@ -56,6 +56,13 @@ class App{
 		this.app.use('/',FormularioRoutes)
 		
 	}
+
+	configurarCORS(req:Request,res:Response,next:any){
+        res.header("Access-Control-Allow-Origin","*");
+        res.header("Access-Control-Allow-Methods","GET, POST");
+        res.header("Access-Control-Allow-Headers","Content-Type");
+        next();
+    }
 	/**
 	 * Método para la iniciación del servidor, Aunque se define un método de apagado de servidor,
 	 * se utiliza la biblioteca nodemon para automatizar el enciendido y apagado del servidor

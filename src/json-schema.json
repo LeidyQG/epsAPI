@@ -13,9 +13,8 @@
         "apellido": {
           "type": "string"
         },
-        "fechaNacimiento": {
-          "type": "string",
-          "format": "date-time"
+        "edad": {
+          "type": "integer"
         },
         "telefono": {
           "type": "string"

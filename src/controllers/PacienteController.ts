@@ -27,18 +27,17 @@ class PacienteController{
                 cedula,
                 nombre,
                 apellido,
-                fecha,
+                edad,
                 telefono
             }= req.body
             
-            const fechaNacimiento= new Date(fecha)
             const paciente= await this.prismaClient.paciente.create(
                 {
                     data:{
                         cedula,
                         nombre,
                         apellido,
-                        fechaNacimiento,
+                        edad,
                         telefono
                     }
                 }
