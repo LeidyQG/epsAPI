@@ -26,9 +26,9 @@ model Medico {
   apellido           String
   consultorio        String
   correo             String
-  Cita               Cita[]
   Especialidad               Especialidad? @relation(fields: [idEspecialidad], references: [idEspecialidad])
   idEspecialidad Int?
+  Cita               Cita[]
 }
 
 model Cita {

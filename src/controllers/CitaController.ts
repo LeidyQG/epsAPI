@@ -9,15 +9,14 @@ import { PrismaClient } from '@prisma/client'
  */
 class CitaController{
 
-    private prisma:PrismaClient
-    prismaClient: any
+    private prismaClient:PrismaClient
 
     constructor(){
-        this.prisma=new PrismaClient()
+        this.prismaClient=new PrismaClient()
     }
 
     async obtenerCitas(req:Request, res:Response){
-        const citas= await this.prisma.cita.findMany()
+        const citas= await this.prismaClient.cita.findMany()
         res.json(citas)
     }
 
@@ -32,7 +31,7 @@ class CitaController{
                 medicoTarjetaProfesional
             }= req.body
             
-            const cita= await this.prismaClient.paciente.create(
+            const cita= await this.prismaClient.cita.create(
                 {
                     data:{
                         idCita,

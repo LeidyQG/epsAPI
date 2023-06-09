@@ -8,15 +8,15 @@ import { PrismaClient } from '@prisma/client'
  */
 class MedicoController{
 
-    private prisma:PrismaClient
-    prismaClient: any
+    private prismaClient:PrismaClient
+
 
     constructor(){
-        this.prisma=new PrismaClient()
+        this.prismaClient=new PrismaClient()
     }
 
     async obtenerMedicos(req:Request, res:Response){
-        const medicos= await this.prisma.medico.findMany()
+        const medicos= await this.prismaClient.medico.findMany()
         res.json(medicos)
     }
 
@@ -28,7 +28,8 @@ class MedicoController{
                 apellido,
                 consultorio,
                 correo,
-                Especialidad
+                Especialidad,
+                idEspecialidad
             }= req.body
             
             const medico= await this.prismaClient.medico.create(
@@ -39,7 +40,8 @@ class MedicoController{
                         apellido,
                         consultorio,
                         correo,
-                        Especialidad
+                        Especialidad,
+                        idEspecialidad
                     }
                 }
             )
