@@ -30,12 +30,30 @@ class PacienteRouter{
             }
 		)
 
+        this.router.get('/paciente/:cedula',
+        (req:Request, res:Response)=> {
+            this.pacienteController.obtenerPaciente(req,res)
+        }        
+    )
+
 		this.router.post(
 			'/crear_paciente',
             (req:Request, res:Response)=>{
                 this.pacienteController.crearPaciente(req, res)
             }			
 		)
+
+        this.router.delete('/pacientes/:cedula',
+        (req:Request, res:Response)=> {
+            this.pacienteController.eliminarPaciente(req,res)
+        }        
+        )
+
+        this.router.put('/pacientes/:Cedula',
+        (req:Request, res:Response)=> {
+            this.pacienteController.actualizarPaciente(req,res)
+        }        
+        )
     }
 }
 

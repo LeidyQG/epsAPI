@@ -21,11 +21,17 @@ class MedicoRouter{
 
     private routes():void{
 
-        this.router.get('/medicos',
+        this.router.get('/medico/:tarjeta',
             (req:Request, res:Response)=> {
-                this.medicoController.obtenerMedicos(req,res)
+                this.medicoController.obtenerMedico(req,res)
             }        
         )
+
+        this.router.get('/medicos',
+        (req:Request, res:Response)=> {
+            this.medicoController.obtenerMedicos(req,res)
+        }        
+    )
 
         this.router.post(
 			'/crear_medico',
@@ -33,6 +39,18 @@ class MedicoRouter{
                 this.medicoController.crearMedico(req, res)
             }			
 		)
+
+        this.router.delete('/medicos/:tarjeta',
+        (req:Request, res:Response)=> {
+            this.medicoController.eliminarMedico(req,res)
+        }        
+        )
+
+        this.router.put('/medicos/:tarjeta',
+        (req:Request, res:Response)=> {
+            this.medicoController.actualizarMedico(req,res)
+        }        
+        )
     }
 
 }

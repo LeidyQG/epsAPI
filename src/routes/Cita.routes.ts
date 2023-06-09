@@ -22,6 +22,12 @@ class CitaRouter{
         this.router.get('/citas',
             (req:Request, res:Response)=> {
                 this.citaController.obtenerCitas(req,res)
+            }
+        )   
+
+        this.router.get('/citas/:cedula',
+            (req:Request, res:Response)=> {
+                this.citaController.obtenerCita(req,res)
             }        
         )
 
@@ -31,6 +37,19 @@ class CitaRouter{
                 this.citaController.crearCita(req, res)
             }			
 		)
+
+        this.router.delete('/citas/:cedula',
+        (req:Request, res:Response)=> {
+            this.citaController.eliminarCita(req,res)
+        }        
+        )
+
+        this.router.put('/citas/:Cedula',
+        (req:Request, res:Response)=> {
+            this.citaController.actualizarCita(req,res)
+        }        
+        )
+        
     }
 
 }

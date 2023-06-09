@@ -16,8 +16,13 @@ class MedicoController{
     }
 
     async obtenerMedicos(req:Request, res:Response){
-        const medicos= await this.prismaClient.medico.findMany()
-        res.json(medicos)
+        try {
+            const medicos= await this.prismaClient.medico.findMany()
+            res.json(medicos)
+        } catch (error) {
+            
+        }
+
     }
 
     async crearMedico(req:Request, res:Response){								
@@ -53,6 +58,68 @@ class MedicoController{
         }
     }
 
+    async eliminarMedico(req:Request, res:Response){		
+        const {tarjeta}=req.params
+        try {
+            const medico= await this.prismaClient.medico.delete(
+                {where:{
+                    tarjetaProfesional:parseInt(tarjeta)
+                }}
+            )
+            res.json(medico)
+        }catch(e:any){
+            res.status(400)
+            res.json({error:e.message})
+        }
+    }
+
+    async obtenerMedico(req:Request, res:Response){
+        const {tarjeta}=req.params
+        try {
+            const medicos= await this.prismaClient.medico.findMany(
+                {where:{
+                    tarjetaProfesional:parseInt(tarjeta)
+                }}
+            )
+            res.json(medicos)
+        } catch (error) {
+            
+        }
+
+    }
+
+    async actualizarMedico(req:Request, res:Response){
+        		
+        const {tarjeta}=req.params
+        const tarjetaProfesional=parseInt(tarjeta)
+        const {nombre}=req.body
+        const {apellido}=req.body
+        const {consultorio}=req.body
+        const {correo}=req.body
+        const {Especialidad}=req.body
+        const {idEspecialidad}=req.body
+        try {
+            const medico= await this.prismaClient.medico.update(
+                {where:{
+                    tarjetaProfesional:parseInt(tarjeta)
+                },
+                data:{
+                    tarjetaProfesional:tarjetaProfesional,
+                    nombre:nombre,
+                    apellido:apellido,
+                    consultorio:consultorio,
+                    correo:correo,
+                    Especialidad:Especialidad,
+                    idEspecialidad:idEspecialidad
+            }
+                }    
+            )
+            res.json(medico)
+        }catch(e:any){
+            res.status(400)
+            res.json({error:e.message})
+        }
+    }
 }
 
 export default MedicoController
