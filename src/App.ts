@@ -37,11 +37,11 @@ class App{
 		)
 		this.app.use(cors())
 		this.routes()
-		this.app.use('/auth',rutas_auth)
+		/*this.app.use('/auth',rutas_auth)
 		passport.use(miEstrategia)
 		this.app.use(passport.initialize()) 
 		this.app.use('/',passport.authenticate('jwt',{session:false}) ,PacienteRouter)
-		this.app.use('/',passport.authenticate('jwt',{session:false}) ,CitaRoutes)
+		this.app.use('/',passport.authenticate('jwt',{session:false}) ,CitaRoutes)*/
 	}
 
 		
@@ -56,6 +56,13 @@ class App{
 		this.app.use('/',FormularioRoutes)
 		
 	}
+
+	configurarCORS(req:Request,res:Response,next:any){
+        res.header("Access-Control-Allow-Origin","*");
+        res.header("Access-Control-Allow-Methods","GET, POST");
+        res.header("Access-Control-Allow-Headers","Content-Type");
+        next();
+    }
 	/**
 	 * Método para la iniciación del servidor, Aunque se define un método de apagado de servidor,
 	 * se utiliza la biblioteca nodemon para automatizar el enciendido y apagado del servidor
