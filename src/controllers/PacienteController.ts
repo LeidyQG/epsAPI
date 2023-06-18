@@ -97,7 +97,7 @@ class PacienteController{
         const {edad}=req.body
         const {telefono}=req.body
         try {
-            const medico= await this.prismaClient.paciente.update(
+            const paciente= await this.prismaClient.paciente.update(
                 {where:{
                     cedula:parseInt(Cedula)
                 },
@@ -110,7 +110,7 @@ class PacienteController{
             }
                 }    
             )
-            res.json(medico)
+            res.json(paciente)
         }catch(e:any){
             res.status(400)
             res.json({error:e.message})

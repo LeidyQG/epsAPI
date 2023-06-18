@@ -1,5 +1,4 @@
 import swaggerUi from 'swagger-ui-express'
-import { swaggerSpec } from './swagger.conf'
 import express,{Application, Request, Response} from 'express'
 import passport from "passport"
 import dotenv from 'dotenv'
@@ -10,8 +9,6 @@ import CitaRoutes from './routes/Cita.routes'
 import EspecialidadRoutes from './routes/Especialidad.routes'
 import FormularioRoutes from './routes/Formulario.routes'
 import cors from 'cors'
-import rutas_auth from './routes/authRoutes'
-import miEstrategia from "./config/passport"
 
 
 /**
@@ -30,11 +27,6 @@ class App{
 	constructor(){
 		this.app=express()
 		this.app.use(express.json())
-		this.app.use(
-			'/api-docs', //Donde se publicará la documentación
-			swaggerUi.serve, //En qué servidor
-			swaggerUi.setup(swaggerSpec) //La configuración que usará
-		)
 		this.app.use(cors())
 		this.routes()
 		/*this.app.use('/auth',rutas_auth)
